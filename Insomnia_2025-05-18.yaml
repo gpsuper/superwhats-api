@@ -1,0 +1,145 @@
+type: collection.insomnia.rest/5.0
+name: SMAIL-SUPER
+meta:
+  id: wrk_809016df05da4a09a33a52a379bc221f
+  created: 1746989673243
+  modified: 1746989673243
+collection:
+  - url: https://supermail.test/api/public/account/list-emails?account=e72f66b2-b5b0-4e05-9a84-ca425e866f65
+    name: ListEmailsAccounts
+    meta:
+      id: req_32cf515fc6e441c2a000849252bc2959
+      created: 1746989681025
+      modified: 1747537724975
+      isPrivate: false
+      sortKey: -1746989681025
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query_email_address":["ti@superestagios.com.br"]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_aac66594b89b493fb2b017aff2484e5f
+      - id: pair_fd4d1105d90240228ee5e3f9abb9b58b
+        name: Authorization
+        value: Bearer 2a1c64c1-3ce8-482b-bd7b-5d84ecf8dfdb
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://supermail.test/api/public/client/list-emails
+    name: ListEmailsClient
+    meta:
+      id: req_bc61afb76d8846db9ef86e551578235c
+      created: 1747536322713
+      modified: 1747537300456
+      isPrivate: false
+      sortKey: -1745990270802
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_aac66594b89b493fb2b017aff2484e5f
+      - id: pair_fd4d1105d90240228ee5e3f9abb9b58b
+        name: Authorization
+        value: Bearer 2a1c64c1-3ce8-482b-bd7b-5d84ecf8dfdb
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://supermail.test/api/public/account/send-email?account=e72f66b2-b5b0-4e05-9a84-ca425e866f65
+    name: SendEmail
+    meta:
+      id: req_087a379ee9bc416692fe209e405fe7ad
+      created: 1747537742181
+      modified: 1747537901626
+      isPrivate: false
+      sortKey: -1745490565690.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"to":["ti.superest@gmail.com"],
+        	"subject"	:"Poggers Noggers pt.II",
+        	"body":"<h1>Nova Era do email</h1>"	
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_aac66594b89b493fb2b017aff2484e5f
+      - id: pair_fd4d1105d90240228ee5e3f9abb9b58b
+        name: Authorization
+        value: Bearer 2a1c64c1-3ce8-482b-bd7b-5d84ecf8dfdb
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f88d9a65fa4cdaef7890d06e6f557a33a7353a30
+    created: 1746989673248
+    modified: 1746993877287
+  cookies:
+    - key: XSRF-TOKEN
+      value: eyJpdiI6InpjQXdRKyt3bGppUTVwektJV2QzMVE9PSIsInZhbHVlIjoidXZCV1hnYXIydnh5eDIxdUdVQWdIQ2lOdWFhSmQ3UzArTGNUbXBocGNlWTlnbFhGblhybTcrbUhrd3A2MkdxclRjb2tzY3NVbElrdHRNbDFaVHB0d2VSQ0dYOVhBY0IrVDk3UEpjSzNNVGxSdGorclA3L3gzRVRJSC9mRnYveWMiLCJtYWMiOiIyNjczM2RjNTIxOTllY2MzMzI2NTg2NTI2NjRiZDZkMzFmNjdlZGFhN2UxZWYxNDNlYzY3NmVkYTcwZDQyNWZmIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: supermail.test
+      path: /
+      secure: true
+      hostOnly: true
+      creation: 2025-05-11T19:33:24.053Z
+      lastAccessed: 2025-05-11T20:04:37.287Z
+      sameSite: lax
+      id: 994a9727-ad41-46b3-a8cf-a0581c1e70fd
+    - key: laravel_session
+      value: eyJpdiI6IkoycWc0M2xPaTk3NVlVK1gvdldka3c9PSIsInZhbHVlIjoiUGZGVFJaem1VZFNRY0J6NVhQN2s0ZWhaamxVZ0tHSmdNRTZ3cnpjcWNhWG1TekM1Q3FRN2RZZVdpaGc1NmQrUVhnaG9IOUhhMnpPa2ZFSWVLb1p4T2kwT2xkdTFuQ0JkcitqL1FKSmpCcEsyeS95VVBuREsvSmJhR1FKMzQ0bXMiLCJtYWMiOiI4NmU4NzAwMzU5MjhkYjMyOGJiMDcwYjJhYzliMzNmYWUwZDk5NmNiNGNmY2U5NjFmMTVkMGEyOTQyMDJhNjk3IiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: supermail.test
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-11T19:33:24.054Z
+      lastAccessed: 2025-05-11T20:04:37.287Z
+      sameSite: lax
+      id: 063fed1b-932f-46a4-b3d3-434357bd9cd8
+environments:
+  name: Base Environment
+  meta:
+    id: env_f88d9a65fa4cdaef7890d06e6f557a33a7353a30
+    created: 1746989673246
+    modified: 1746989673246
+    isPrivate: false

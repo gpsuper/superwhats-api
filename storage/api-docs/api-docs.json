@@ -1,0 +1,35 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Smail",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "smail.test",
+            "description": "Servidor local de desenvolvimento"
+        }
+    ],
+    "paths": {
+        "/api/emails": {
+            "get": {
+                "tags": [
+                    "ListEmails"
+                ],
+                "summary": "Lista todos os emails do usuário passado no JWT",
+                "operationId": "9552f4749372e92c031a655152fc111d",
+                "responses": {
+                    "200": {
+                        "description": "Retorna todos os emails do usuário"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "ListEmails",
+            "description": "ListEmails"
+        }
+    ]
+}
