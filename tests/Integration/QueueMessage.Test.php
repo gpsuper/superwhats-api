@@ -1,17 +1,16 @@
 <?php
 
-use App\UseCases\Adicionar;
 use Tests\TestCase;
 
 uses(TestCase::class);
 
-class queueManangerContainer{
+class queueManangerContainer
+{
     public AccountRepository $accountRepository;
-    public QueueMessage $queueMessageUseCase;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->accountRepository = new AccountRepository();
-        $this->queueMessageUseCase = new QueueMessage();
     }
 }
 
@@ -21,12 +20,15 @@ describe('QueueMessage', function () {
 
         $account = Account::create();
         $container->accountRepository->save($account);
-        
-        $message = [
+
+        $this->sut = new QueueMessage();
+
+        $this->message = [
             "to" => "9999999999",
             "message" => [
-                "external_id"=>"",
+                "external_id" => "",
                 "type" => "FREE|TEMPLATE",
+                "category"=>"",
                 "content" => "",
                 "template" => [
                     "version" => "",
@@ -37,16 +39,40 @@ describe('QueueMessage', function () {
 
         $this->input = [
             "account" => $account,
-            "messages" => [$message]
+            "messages" => [$this->message, $this->message]
         ];
     });
-    it('', function () {
 
+    it("should queue message's batch", function () {
+        $response = $this->sut->execute($this->input);
+        expect($response->success)->toBeTrue();
     });
-    it('', function () {
 
+    it("should queue `partially` message's batch", function () {
+        $response = $this->sut->execute($this->input);
+        $message = clone $this->message;
+        $message["message"]["template"]["version"] = 999;
+        $this->input->messages[] = $message;
+
+        $queued_partially = $response->success === true && count($response->error_list) !== count($this->input->messages);
+
+        expect($queued_partially)->toBeTrue();
     });
-    it('', function () {
-        
+    it("should'nt queue nothing", function () {
+        $input = clone $this->input;
+        $input->messages = [];
+
+        $message = clone $this->message;
+        $message["message"]["template"]["version"] = 999;
+
+        for ($i = 0; $i < 2; $i++) {
+            $message["message"]["external_id"] = uniqid();
+            $input->messages[] = $message;
+        }
+
+        $response = $this->sut->execute($input);
+        $queued_nothing = $response->success === false;
+
+        expect($queued_nothing)->toBeTrue();
     });
 });
